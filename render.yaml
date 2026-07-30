@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: trillion-trader-backend
+    env: docker
+    region: frankfurt
+    plan: starter
+    healthCheckPath: /api/v1/auth/login
+    envVars:
+      - key: SPRING_PROFILES_ACTIVE
+        value: prod
+      - key: MONGO_URI
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: CORS_ALLOWED_ORIGINS
+        sync: false

@@ -1,0 +1,262 @@
+/* Fonts loaded via index.html */
+@import "tailwindcss";
+
+/* ============================================
+   DESIGN TOKENS — Logo-matched palette
+   Logo: Deep black circle + Amber-gold ($) + White wings
+   Inspired by: Binance, TradingView, Linear
+============================================ */
+:root {
+  /* === GOLD PALETTE (from logo text and dollar band) === */
+  --gold:          #DDA73C;   /* Rich metallic gold — matches logo */
+  --gold-bright:   #F5D36B;   /* Bright gold for highlights */
+  --gold-dim:      #996D19;   /* Dimmed gold for shadows and hover states */
+  --gold-muted:    #5E420D;   /* Very muted gold for borders */
+
+  /* === BACKGROUNDS === */
+  --bg:            #030303;   /* Pure black to match the logo circle */
+  --bg-alt:        #0A0A0A;   /* Slightly lighter — card backgrounds */
+  --surface:       #0F0F0F;   /* Surface layer */
+  --surface-raised:#161616;   /* Raised cards */
+  --surface-overlay:#1A1A1A;  /* Modals, overlays */
+
+  /* === ACCENT === */
+  --accent:        #00D084;   /* Green — bullish signals */
+  --accent-red:    #FF4D4F;   /* Red — bearish signals */
+  --accent-blue:   #3B82F6;   /* Blue — info */
+
+  /* === TEXT === */
+  --text-primary:  #F0F0F0;
+  --text-secondary:#A3A3A3;
+  --text-muted:    #666666;
+
+  /* === BORDERS === */
+  --border-gold:   rgba(221, 167, 60, 0.15);
+  --border-subtle: rgba(255, 255, 255, 0.05);
+}
+
+/* ============================================
+   BASE RESET
+============================================ */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text-primary);
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+  line-height: 1.65;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.18;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+::selection {
+  background: rgba(221, 167, 60, 0.22);
+  color: #F5D36B;
+}
+
+/* Premium scrollbar */
+::-webkit-scrollbar          { width: 5px; }
+::-webkit-scrollbar-track    { background: var(--bg); }
+::-webkit-scrollbar-thumb    { background: var(--gold-muted); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--gold); }
+
+/* ============================================
+   LAYOUT UTILITIES
+============================================ */
+.section-container {
+  max-width: 82rem;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+@media (min-width: 640px)  { .section-container { padding: 0 2rem; } }
+@media (min-width: 1024px) { .section-container { padding: 0 3rem; } }
+
+.section-padding   { padding: 5.5rem 0; }
+@media (min-width: 768px)  { .section-padding { padding: 7.5rem 0; } }
+@media (min-width: 1024px) { .section-padding { padding: 9rem 0; } }
+
+/* ============================================
+   GLASSMORPHISM
+============================================ */
+.glass {
+  background:  rgba(255, 255, 255, 0.025);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid var(--border-gold);
+  border-radius: 1rem;
+}
+
+.glass-dark {
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--border-subtle);
+  border-radius: 1rem;
+}
+
+/* ============================================
+   GRADIENT TEXT
+============================================ */
+.gradient-text {
+  background: linear-gradient(135deg, #F5D36B 0%, #DDA73C 45%, #996D19 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-accent {
+  background: linear-gradient(135deg, #00D084 0%, #6EE7B7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ============================================
+   GOLD GLOW
+============================================ */
+.glow-gold {
+  box-shadow: 0 0 24px rgba(221,167,60,0.25), 0 0 60px rgba(221,167,60,0.08);
+}
+.glow-gold-sm  { box-shadow: 0 0 10px rgba(221,167,60,0.20); }
+.glow-gold-lg  { box-shadow: 0 0 50px rgba(221,167,60,0.18), 0 20px 80px rgba(0,0,0,0.7); }
+.text-glow-gold { filter: drop-shadow(0 0 18px rgba(221,167,60,0.40)); }
+
+/* ============================================
+   BACKGROUND PATTERNS
+============================================ */
+.bg-hero-gradient {
+  background: radial-gradient(ellipse 80% 50% at 50% -10%, rgba(221,167,60,0.12) 0%, transparent 70%);
+}
+
+.bg-glow-gold {
+  background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(221,167,60,0.08) 0%, transparent 65%);
+}
+
+.bg-gold-gradient {
+  background: linear-gradient(135deg, #DDA73C 0%, #996D19 100%);
+}
+
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(221,167,60,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(221,167,60,0.025) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+/* ============================================
+   BADGE
+============================================ */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 14px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  font-family: 'Space Grotesk', monospace;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border: 1px solid rgba(221, 167, 60, 0.25);
+  background: rgba(221, 167, 60, 0.08);
+  color: var(--gold);
+}
+
+.badge-accent {
+  border-color: rgba(0, 208, 132, 0.25);
+  background: rgba(0, 208, 132, 0.07);
+  color: #00D084;
+}
+
+/* ============================================
+   INPUT FIELDS
+============================================ */
+.input-premium {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-size: 0.875rem;
+  transition: all 0.3s ease;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(221,167,60,0.12);
+  color: var(--text-primary);
+  outline: none;
+  font-family: 'Inter', sans-serif;
+}
+.input-premium::placeholder { color: var(--text-muted); }
+.input-premium:focus {
+  border-color: rgba(221,167,60,0.45);
+  box-shadow: 0 0 0 3px rgba(221,167,60,0.08);
+  background: rgba(221,167,60,0.02);
+}
+
+/* ============================================
+   DIVIDERS
+============================================ */
+.gold-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(221,167,60,0.45), transparent);
+}
+
+/* ============================================
+   SKELETON
+============================================ */
+.skeleton {
+  background: linear-gradient(90deg, var(--surface) 25%, var(--surface-raised) 50%, var(--surface) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.8s linear infinite;
+  border-radius: 8px;
+}
+
+/* ============================================
+   MISCELLANEOUS
+============================================ */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+.rounded-4xl { border-radius: 2rem; }
+.duration-400 { transition-duration: 400ms; }
+
+/* ============================================
+   KEYFRAMES
+============================================ */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-14px); }
+}
+@keyframes pulseGold {
+  0%, 100% { box-shadow: 0 0 10px rgba(221,167,60,0.15); }
+  50%       { box-shadow: 0 0 28px rgba(221,167,60,0.4); }
+}
+@keyframes ticker {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+
+.animate-float       { animation: float 6s ease-in-out infinite; }
+.animate-float-slow  { animation: float 9s ease-in-out infinite; }
+.animate-pulse-gold  { animation: pulseGold 2s ease-in-out infinite; }
+.animate-ticker      { animation: ticker 35s linear infinite; }
+.animate-shimmer     { animation: shimmer 1.8s linear infinite; }

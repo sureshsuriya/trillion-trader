@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: trillion-trader
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/trillion_traders
+
+server:
+  port: 8080
+

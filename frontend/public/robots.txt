@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://trillion-traders.example.com/sitemap.xml

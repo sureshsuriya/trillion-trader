@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trillion Trader 369 — Trade With Discipline</title>
+<meta name="description" content="Trillion Trader 369 — trading education, live market analysis, free tools, and trusted prop firm & broker recommendations.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo">
+      <img src="assets/images/logo.png" alt="Trillion Trader 369 Logo" class="logo-mark" style="border-radius: 50%;">
+      Trillion Trader <span style="color:var(--gold)">369</span>
+    </div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#tools">Tools</a>
+      <a href="#chart">Markets</a>
+      <a href="#propfirms">Prop Firms</a>
+      <a href="#brokers">Brokers</a>
+      <a href="#resources">Resources</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
+        <svg id="themeIcon" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+      <a href="#tools" class="btn btn-gold btn-sm" style="display:none" id="ctaDesktop">Free Tools</a>
+      <button class="burger" id="burgerBtn" aria-label="Menu"><span></span></button>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about">About</a>
+    <a href="#tools">Tools</a>
+    <a href="#chart">Markets</a>
+    <a href="#propfirms">Prop Firms</a>
+    <a href="#brokers">Brokers</a>
+    <a href="#resources">Resources</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact">Contact</a>
+  </div>
+</header>
+
+<div class="ticker-strip">
+  <div class="ticker-track" id="tickerTrack"></div>
+</div>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Trading Education · Market Analysis · Community</div>
+      <h1>Trade gold &amp; forex with <span class="accent">discipline</span>, not guesswork.</h1>
+      <p class="lead">Trillion Trader 369 is a trading education community sharing daily market analysis, free tools, and honest reviews of prop firms &amp; brokers — built for traders who want a process, not tips.</p>
+      <div class="hero-cta">
+        <a href="#telegram" class="btn btn-gold">Join Telegram Community</a>
+        <a href="#tools" class="btn btn-ghost">Explore Free Tools</a>
+      </div>
+      <div class="hero-cta" style="margin-top:4px;">
+        <span style="font-size:12.5px; color:var(--text-low);">Free tools · Live gold &amp; forex charts · No signup required</span>
+      </div>
+    </div>
+    <div class="scene">
+      <div class="candles-3d" id="candleScene"></div>
+      <div class="scene-caption">MARKET STRUCTURE · VISUALIZED</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section id="about">
+  <div class="wrap about-grid">
+    <div>
+      <div class="eyebrow">Who We Are</div>
+      <h2 style="font-size:clamp(24px,3vw,32px); margin-bottom:16px;">A community built on process over promises.</h2>
+      <p style="color:var(--text-mid); font-size:15px; margin-bottom:24px;">We're a team of retail traders who got tired of signal groups that hide their losses. Trillion Trader 369 exists to teach risk management, share transparent market analysis, and point our community toward tools and partners we'd actually use ourselves.</p>
+      <div class="pillars">
+        <div class="pillar">
+          <div class="pillar-num">01</div>
+          <div><h4>Education first</h4><p>Every call comes with the "why" — structure, risk, and invalidation — not just an entry price.</p></div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-num">02</div>
+          <div><h4>Transparent track record</h4><p>Wins and losses are posted in the same place, at the same time.</p></div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-num">03</div>
+          <div><h4>Vetted partners only</h4><p>We only recommend prop firms and brokers our own team trades with.</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="card" style="padding:36px;">
+      <div class="eyebrow">Our Mission</div>
+      <h3 style="font-size:22px; margin-bottom:14px; line-height:1.3;">Turn discretionary guessing into a repeatable, risk-first trading process.</h3>
+      <p style="color:var(--text-mid); font-size:14.5px; margin-bottom:20px;">369 stands for the compounding discipline we teach: 3 rules you never break, 6 checks before every entry, 9% max monthly drawdown. It's a framework, not a formula for guaranteed profit.</p>
+      <div style="display:flex; gap:14px; flex-wrap:wrap;">
+        <a href="#" class="btn btn-ghost btn-sm">Meet the Team</a>
+        <a href="#faq" class="btn btn-ghost btn-sm">Read our FAQ</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SOCIAL ===== -->
+<section class="social-band" id="telegram">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Join The Community</div>
+      <h2>Where we actually post the analysis.</h2>
+      <p>Daily market updates, education, and trade ideas — live where our community already is.</p>
+    </div>
+    <div class="social-cards">
+      <div class="social-card">
+        <div class="social-icon"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M21 3L2 10.5l6 2m13-9.5L16.5 20l-6.5-6m11-11L9.5 14"/></svg></div>
+        <h4>Telegram</h4><p>Daily setups &amp; live updates</p>
+        <a href="https://t.me/trilliontrader369" target="_blank" rel="noopener" class="btn btn-gold btn-sm" style="width:100%; justify-content:center;">Join Channel</a>
+      </div>
+      <div class="social-card">
+        <div class="social-icon"><svg viewBox="0 0 24 24" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></div>
+        <h4>Instagram</h4><p>Reels, charts &amp; recaps</p>
+        <a href="https://www.instagram.com/trilliontrader369?igsh=MXQyMmo4ODhyangzaA%3D%3D" target="_blank" rel="noopener" class="btn btn-gold btn-sm" style="width:100%; justify-content:center;">Follow Us</a>
+      </div>
+      <div class="social-card">
+        <div class="social-icon"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M22 8.5s-.2-1.6-.8-2.3c-.8-.9-1.7-.9-2.1-1C16.3 5 12 5 12 5h0s-4.3 0-7.1.2c-.4.1-1.3.1-2.1 1-.6.7-.8 2.3-.8 2.3S1.8 10.4 1.8 12.3v1.8c0 1.9.2 3.8.2 3.8s.2 1.6.8 2.3c.8.9 1.9.9 2.4 1 1.7.2 7.3.2 7.3.2s4.3 0 7.1-.2c.4-.1 1.3-.1 2.1-1 .6-.7.8-2.3.8-2.3s.2-1.9.2-3.8v-1.8c0-1.9-.2-3.8-.2-3.8z"/><path d="M10 15l5-3-5-3z" fill="var(--gold)" stroke="none"/></svg></div>
+        <h4>YouTube</h4><p>Weekly breakdowns</p>
+        <a href="#" class="btn btn-ghost btn-sm" style="width:100%; justify-content:center;">Watch Now</a>
+      </div>
+      <div class="social-card">
+        <div class="social-icon"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M21 11.5a8.5 8.5 0 01-8.5 8.5H3l2-4A8.5 8.5 0 1121 11.5z"/></svg></div>
+        <h4>WhatsApp</h4><p>Quick support line</p>
+        <a href="#" class="btn btn-ghost btn-sm" style="width:100%; justify-content:center;">Message Us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TOOLS ===== -->
+<section id="tools">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Free Trading Tools</div>
+      <h2>Calculate before you click buy.</h2>
+      <p>Four essential calculators every trader should use before opening a position. No signup required.</p>
+    </div>
+
+    <div class="tool-tabs">
+      <button class="tab-btn active" data-tab="lot">Lot Size</button>
+      <button class="tab-btn" data-tab="risk">Risk Management</button>
+      <button class="tab-btn" data-tab="pl">Profit &amp; Loss</button>
+      <button class="tab-btn" data-tab="pip">Pip Value</button>
+    </div>
+
+    <!-- LOT SIZE -->
+    <div class="tool-panel active" id="tab-lot">
+      <div class="tool-form">
+        <div class="field"><label>Account Balance (USD)</label><input type="number" id="lot-balance" value="1000"></div>
+        <div class="field"><label>Risk per Trade (%)</label><input type="number" id="lot-risk" value="1"></div>
+        <div class="field"><label>Stop Loss (Pips)</label><input type="number" id="lot-sl" value="20"></div>
+        <div class="field"><label>Pair Type</label>
+          <select id="lot-pair">
+            <option value="10">Standard pair (e.g. EUR/USD)</option>
+            <option value="9.09">JPY pair (e.g. USD/JPY)</option>
+            <option value="10">Gold — XAU/USD (per 0.1 pip)</option>
+          </select>
+        </div>
+      </div>
+      <button class="btn btn-gold btn-sm" onclick="calcLot()" style="margin-top:20px;">Calculate Lot Size</button>
+      <div class="tool-result">
+        <div class="res-item"><span>Amount at Risk</span><b id="lot-out-risk">$10.00</b></div>
+        <div class="res-item"><span>Recommended Lot Size</span><b id="lot-out-lot">0.05</b></div>
+        <div class="res-item"><span>Units</span><b id="lot-out-units">5,000</b></div>
+      </div>
+    </div>
+
+    <!-- RISK MANAGEMENT -->
+    <div class="tool-panel" id="tab-risk">
+      <div class="tool-form">
+        <div class="field"><label>Account Balance (USD)</label><input type="number" id="risk-balance" value="1000"></div>
+        <div class="field"><label>Max Risk per Trade (%)</label><input type="number" id="risk-pct" value="1"></div>
+        <div class="field"><label>Max Trades per Day</label><input type="number" id="risk-trades" value="3"></div>
+        <div class="field"><label>Max Daily Drawdown (%)</label><input type="number" id="risk-dd" value="3"></div>
+      </div>
+      <button class="btn btn-gold btn-sm" onclick="calcRisk()" style="margin-top:20px;">Calculate Limits</button>
+      <div class="tool-result">
+        <div class="res-item"><span>Risk per Trade</span><b id="risk-out-per">$10.00</b></div>
+        <div class="res-item"><span>Max Daily Loss</span><b id="risk-out-daily">$30.00</b></div>
+        <div class="res-item"><span>Stop Trading Below</span><b id="risk-out-floor">$970.00</b></div>
+      </div>
+    </div>
+
+    <!-- P&L -->
+    <div class="tool-panel" id="tab-pl">
+      <div class="tool-form">
+        <div class="field"><label>Lot Size</label><input type="number" id="pl-lot" value="0.10" step="0.01"></div>
+        <div class="field"><label>Entry Price</label><input type="number" id="pl-entry" value="1.0850" step="0.0001"></div>
+        <div class="field"><label>Exit Price</label><input type="number" id="pl-exit" value="1.0900" step="0.0001"></div>
+        <div class="field"><label>Direction</label>
+          <select id="pl-dir"><option value="buy">Buy</option><option value="sell">Sell</option></select>
+        </div>
+      </div>
+      <button class="btn btn-gold btn-sm" onclick="calcPL()" style="margin-top:20px;">Calculate P&amp;L</button>
+      <div class="tool-result">
+        <div class="res-item"><span>Pips</span><b id="pl-out-pips">50.0</b></div>
+        <div class="res-item"><span>Profit / Loss</span><b id="pl-out-money">$50.00</b></div>
+      </div>
+    </div>
+
+    <!-- PIP VALUE -->
+    <div class="tool-panel" id="tab-pip">
+      <div class="tool-form">
+        <div class="field"><label>Lot Size</label><input type="number" id="pip-lot" value="1" step="0.01"></div>
+        <div class="field"><label>Pair Type</label>
+          <select id="pip-pair">
+            <option value="10">Standard pair (XXX/USD)</option>
+            <option value="9.09">JPY pair (XXX/JPY)</option>
+          </select>
+        </div>
+      </div>
+      <button class="btn btn-gold btn-sm" onclick="calcPip()" style="margin-top:20px;">Calculate Pip Value</button>
+      <div class="tool-result">
+        <div class="res-item"><span>Value per Pip</span><b id="pip-out">$10.00</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== LIVE CHART ===== -->
+<section id="chart" style="background:var(--panel2); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Live Markets</div>
+      <h2>Gold &amp; forex, in real time.</h2>
+      <p>Live TradingView chart — switch symbols and timeframes directly on the widget.</p>
+    </div>
+    <div class="chart-wrap">
+      <div class="tradingview-widget-container chart-embed" id="tvChartContainer">
+        <div class="widget-loading"><span class="widget-spinner"></span> Loading live chart…</div>
+        <div class="tradingview-widget-container__widget" style="height:100%;width:100%"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CALENDAR + SESSIONS ===== -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Plan Your Trading Day</div>
+      <h2>Economic calendar &amp; session times.</h2>
+      <p>Know what news is coming and which market is open right now.</p>
+    </div>
+    <div class="calendar-session-grid">
+      <div class="chart-wrap" style="height:420px;">
+        <div class="tradingview-widget-container" id="tvCalendarContainer" style="height:100%;width:100%;">
+          <div class="widget-loading"><span class="widget-spinner"></span> Loading calendar…</div>
+          <div class="tradingview-widget-container__widget" style="height:100%;width:100%"></div>
+        </div>
+      </div>
+      <div class="card" id="sessionCard">
+        <h4 style="margin-bottom:6px;">Forex Session Times</h4>
+        <p style="color:var(--text-low); font-size:12.5px; margin-bottom:16px;">Based on your local device clock (IST reference)</p>
+        <div id="sessionList"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROP FIRMS ===== -->
+<section id="propfirms" style="background:var(--panel2); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Recommended Prop Firms</div>
+      <h2>Get funded with firms we actually trade with.</h2>
+      <p>We only list prop firms our own team has passed evaluations with and withdrawn payouts from.</p>
+    </div>
+    <div class="grid-3">
+      <div class="card offer-card">
+        <div class="offer-top"><h4>[Prop Firm Name]</h4><span class="offer-badge">[Discount %]</span></div>
+        <ul class="offer-list"><li>[Funding amount]</li><li>[Profit split]</li><li>[Key benefit]</li></ul>
+        <div class="code-row"><span>[CODE369]</span><button class="copy-btn" onclick="copyCode('[CODE369]', this)">Copy</button></div>
+      </div>
+      <div class="card offer-card">
+        <div class="offer-top"><h4>[Prop Firm Name]</h4><span class="offer-badge">[Discount %]</span></div>
+        <ul class="offer-list"><li>[Funding amount]</li><li>[Profit split]</li><li>[Key benefit]</li></ul>
+        <div class="code-row"><span>[CODE369]</span><button class="copy-btn" onclick="copyCode('[CODE369]', this)">Copy</button></div>
+      </div>
+      <div class="card offer-card">
+        <div class="offer-top"><h4>[Prop Firm Name]</h4><span class="offer-badge">[Discount %]</span></div>
+        <ul class="offer-list"><li>[Funding amount]</li><li>[Profit split]</li><li>[Key benefit]</li></ul>
+        <div class="code-row"><span>[CODE369]</span><button class="copy-btn" onclick="copyCode('[CODE369]', this)">Copy</button></div>
+      </div>
+    </div>
+    <p style="margin-top:24px; font-size:13px; color:var(--text-low);">⚠ Placeholder cards — replace names, terms, and codes with your client's real, confirmed prop firm partnerships before launch.</p>
+  </div>
+</section>
+
+<!-- ===== BROKERS ===== -->
+<section id="brokers">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Recommended Brokers</div>
+      <h2>Trade through brokers we trust with our own capital.</h2>
+      <p>Regulation, spreads, and execution quality — vetted before they make this list.</p>
+    </div>
+    <div class="grid-3">
+      <div class="card offer-card">
+        <div class="offer-top"><h4>[Broker Name]</h4><span class="offer-badge">[Offer Type]</span></div>
+        <ul class="offer-list"><li>[Key feature]</li><li>[Key feature]</li><li>[Regulation info]</li></ul>
+        <div class="code-row"><span>Referral link →</span><a href="#" class="copy-btn" style="text-decoration:none;">Open</a></div>
+      </div>
+      <div class="card offer-card">
+        <div class="offer-top"><h4>[Broker Name]</h4><span class="offer-badge">[Offer Type]</span></div>
+        <ul class="offer-list"><li>[Key feature]</li><li>[Key feature]</li><li>[Regulation info]</li></ul>
+        <div class="code-row"><span>Referral link →</span><a href="#" class="copy-btn" style="text-decoration:none;">Open</a></div>
+      </div>
+      <div class="card offer-card">
+        <div class="offer-top"><h4>[Broker Name]</h4><span class="offer-badge">[Offer Type]</span></div>
+        <ul class="offer-list"><li>[Key feature]</li><li>[Key feature]</li><li>[Regulation info]</li></ul>
+        <div class="code-row"><span>Referral link →</span><a href="#" class="copy-btn" style="text-decoration:none;">Open</a></div>
+      </div>
+    </div>
+    <p style="margin-top:24px; font-size:13px; color:var(--text-low);">⚠ Placeholder cards — add your client's real, confirmed broker partnerships and live referral links before launch.</p>
+  </div>
+</section>
+
+<!-- ===== RESOURCES ===== -->
+<section id="resources" style="background:var(--panel2); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Free Resources</div>
+      <h2>Learn the fundamentals, free.</h2>
+      <p>PDF guides and beginner materials pulled straight from our internal training docs.</p>
+    </div>
+    <div class="grid-2">
+      <div class="card res-card">
+        <div class="res-icon"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg></div>
+        <div><h4 style="font-size:15px; margin-bottom:4px;">Beginner's Guide to Forex</h4><p style="color:var(--text-mid); font-size:13.5px; margin-bottom:10px;">Start here — pips, lots, leverage, and margin explained simply.</p><a href="assets/pdf/Beginners_Guide_to_Forex.pdf" class="btn btn-ghost btn-sm" target="_blank">Download PDF</a></div>
+      </div>
+      <div class="card res-card">
+        <div class="res-icon"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M3 3v18h18"/><path d="M18 9l-5 5-4-4-4 4"/></svg></div>
+        <div><h4 style="font-size:15px; margin-bottom:4px;">Reading Market Structure</h4><p style="color:var(--text-mid); font-size:13.5px; margin-bottom:10px;">Highs, lows, and how to spot a trend shift before it's obvious.</p><a href="assets/pdf/Reading_Market_Structure.pdf" class="btn btn-ghost btn-sm" target="_blank">Download PDF</a></div>
+      </div>
+      <div class="card res-card">
+        <div class="res-icon"><svg viewBox="0 0 24 24" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+        <div><h4 style="font-size:15px; margin-bottom:4px;">Risk Management Checklist</h4><p style="color:var(--text-mid); font-size:13.5px; margin-bottom:10px;">6 checks our team runs before every single entry.</p><a href="assets/pdf/Risk_Management_Checklist.pdf" class="btn btn-ghost btn-sm" target="_blank">Download PDF</a></div>
+      </div>
+      <div class="card res-card">
+        <div class="res-icon"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></div>
+        <div><h4 style="font-size:15px; margin-bottom:4px;">Trading Journal Template</h4><p style="color:var(--text-mid); font-size:13.5px; margin-bottom:10px;">A simple spreadsheet to track every trade and review weekly.</p><a href="assets/pdf/Trading_Journal_Template.pdf" class="btn btn-ghost btn-sm" target="_blank">Download PDF</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Community Results</div>
+      <h2>What traders in our community say.</h2>
+      <p>Real feedback from members of our Telegram community.</p>
+    </div>
+    <div class="testi-track">
+      <div class="card">
+        <div class="stars">★★★★★</div>
+        <p class="testi-quote">[Add a real testimonial quote from a community member here.]</p>
+        <div class="testi-who"><div class="avatar">?</div><div><b>[Name]</b><span>[Role / member since]</span></div></div>
+      </div>
+      <div class="card">
+        <div class="stars">★★★★★</div>
+        <p class="testi-quote">[Add a real testimonial quote from a community member here.]</p>
+        <div class="testi-who"><div class="avatar">?</div><div><b>[Name]</b><span>[Role / member since]</span></div></div>
+      </div>
+      <div class="card">
+        <div class="stars">★★★★★</div>
+        <p class="testi-quote">[Add a real testimonial quote from a community member here.]</p>
+        <div class="testi-who"><div class="avatar">?</div><div><b>[Name]</b><span>[Role / member since]</span></div></div>
+      </div>
+    </div>
+    <p style="margin-top:20px; font-size:13px; color:var(--text-low);">⚠ Placeholder cards — replace with real, consented testimonials from actual community members before launch.</p>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section id="faq" style="background:var(--panel2); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+  <div class="wrap" style="max-width:820px;">
+    <div class="sec-head">
+      <div class="eyebrow">Frequently Asked</div>
+      <h2>Questions we get every week.</h2>
+    </div>
+    <div id="faqList">
+      <div class="faq-item">
+        <div class="faq-q">Is Trillion Trader 369 a signal-selling service?<span class="plus">+</span></div>
+        <div class="faq-a"><p>No. Our Telegram community is free to join. We earn through prop firm and broker referral partnerships and optional mentorship, never through selling raw signals.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Do you guarantee profits?<span class="plus">+</span></div>
+        <div class="faq-a"><p>No — trading carries real risk of loss and no result is guaranteed. We teach process and risk management; see our full disclaimer below.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Which prop firms and brokers do you recommend?<span class="plus">+</span></div>
+        <div class="faq-a"><p>Only ones our own team actively trades with and has personally withdrawn payouts from. See the Prop Firms and Brokers sections above.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Are the trading tools free to use?<span class="plus">+</span></div>
+        <div class="faq-a"><p>Yes, all four calculators on this site — Lot Size, Risk Management, P&amp;L, and Pip Value — are free, with no signup required.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">How do I get mentorship or premium support?<span class="plus">+</span></div>
+        <div class="faq-a"><p>Reach out through the Contact section below or message us on Telegram/WhatsApp, and our team will walk you through available options.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DISCLAIMER ===== -->
+<section>
+  <div class="wrap" style="max-width:900px;">
+    <div class="sec-head">
+      <div class="eyebrow">Important</div>
+      <h2>Trading Risk Disclaimer</h2>
+    </div>
+    <div class="disclaimer-box">
+      <p><strong>Trading forex, gold, and other leveraged products carries a high level of risk and may not be suitable for all investors.</strong> Before deciding to trade, you should carefully consider your investment objectives, level of experience, and risk appetite.</p>
+      <p>Past performance, including any results, testimonials, or track records shown on this website or in our Telegram community, is not indicative of future results. It is possible to lose some or all of your initial investment; do not trade with money you cannot afford to lose.</p>
+      <p>Content on this website — including market analysis, educational material, and trading tools — is provided for general informational and educational purposes only and does not constitute financial, investment, or trading advice.</p>
+      <p>Trillion Trader 369 is not a registered investment advisor or broker-dealer. Prop firm and broker recommendations may include referral partnerships from which we earn a commission; this does not affect the price you pay and does not constitute an endorsement of guaranteed results.</p>
+      <p>Always conduct your own due diligence and consult a licensed financial advisor before making trading decisions.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact" style="background:var(--panel2); border-top:1px solid var(--border);">
+  <div class="wrap contact-grid">
+    <div>
+      <div class="eyebrow">Get In Touch</div>
+      <h2 style="font-size:clamp(24px,3vw,32px); margin-bottom:24px;">Questions about mentorship or partnerships?</h2>
+      <div class="contact-info-item">
+        <div class="contact-icon"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M4 4h16v16H4z" opacity="0"/><path d="M22 6l-10 7L2 6"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg></div>
+        <div><b style="font-size:14px;">Email</b><p style="color:var(--text-mid); font-size:13.5px;">[client's real support email] <span style="color:var(--text-low);">— placeholder</span></p></div>
+      </div>
+      <div class="contact-info-item">
+        <div class="contact-icon"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014 2h3a2 2 0 012 1.7c.1.9.3 1.8.6 2.7a2 2 0 01-.4 2.1L8 9.9a16 16 0 006 6l1.4-1.2a2 2 0 012.1-.4c.9.3 1.8.5 2.7.6a2 2 0 011.8 2z"/></svg></div>
+        <div><b style="font-size:14px;">WhatsApp / Phone</b><p style="color:var(--text-mid); font-size:13.5px;">Available via Telegram community</p></div>
+      </div>
+      <div class="contact-info-item">
+        <div class="contact-icon"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M21 3L2 10.5l6 2m13-9.5L16.5 20l-6.5-6m11-11L9.5 14"/></svg></div>
+        <div><b style="font-size:14px;">Telegram</b><p style="color:var(--text-mid); font-size:13.5px;">Fastest response — join the channel</p></div>
+      </div>
+    </div>
+    <form class="contact-form" onsubmit="handleContact(event)">
+      <input type="text" id="ct-name" placeholder="Your Name" required>
+      <input type="email" id="ct-email" placeholder="Your Email" required>
+      <input type="text" id="ct-subject" placeholder="Subject">
+      <textarea id="ct-msg" placeholder="Your Message" required></textarea>
+      <button type="submit" class="btn btn-gold" style="justify-content:center;">Send Message</button>
+      <p style="font-size:11.5px; color:var(--text-low);">⚠ This opens your email app with the message pre-filled — there's no backend yet to send it directly from the site.</p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="logo" style="margin-bottom:12px;">
+          <img src="assets/images/logo.png" alt="Trillion Trader 369 Logo" class="logo-mark" style="border-radius: 50%;">
+          Trillion Trader 369
+        </div>
+        <p style="color:var(--text-mid); font-size:13.5px; max-width:280px;">Trading education, live analysis, and vetted tools for a community that trades with a process, not guesses.</p>
+      </div>
+      <div>
+        <h5>Site</h5>
+        <div class="footer-links">
+          <a href="#about">About Us</a>
+          <a href="#tools">Trading Tools</a>
+          <a href="#resources">Resources</a>
+          <a href="#faq">FAQ</a>
+        </div>
+      </div>
+      <div>
+        <h5>Partners</h5>
+        <div class="footer-links">
+          <a href="#propfirms">Prop Firms</a>
+          <a href="#brokers">Brokers</a>
+          <a href="#chart">Live Markets</a>
+        </div>
+      </div>
+      <div>
+        <h5>Connect</h5>
+        <div class="footer-links">
+          <a href="https://t.me/trilliontrader369" target="_blank" rel="noopener">Telegram</a>
+          <a href="https://www.instagram.com/trilliontrader369?igsh=MXQyMmo4ODhyangzaA%3D%3D" target="_blank" rel="noopener">Instagram</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Trillion Trader 369. All rights reserved.</span>
+      <span>Trading involves risk. See our Risk Disclaimer above.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/script.js"></script>
+</body>
+</html>
