@@ -28,6 +28,7 @@ export default function ManageFAQ() {
   const [editingItem, setEditingItem] = useState<any | null>(null);
 
   const { data, isLoading } = useQuery({
+    refetchInterval: 60000,
     queryKey: ['faqs', page, debouncedSearch],
     queryFn: async () => {
       const res = await apiClient.get(`/faqs?page=${page}&size=10&search=${debouncedSearch}`);

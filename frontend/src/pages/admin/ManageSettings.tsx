@@ -27,6 +27,7 @@ export default function ManageSettings() {
   const [editingItem, setEditingItem] = useState<any | null>(null);
 
   const { data, isLoading } = useQuery({
+    refetchInterval: 60000,
     queryKey: ['settings', page, debouncedSearch],
     queryFn: async () => {
       const res = await apiClient.get(`/settings?page=${page}&size=10&search=${debouncedSearch}`);

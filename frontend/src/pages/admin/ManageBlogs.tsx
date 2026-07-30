@@ -38,6 +38,7 @@ export default function ManageBlogs() {
   const [editingBlog, setEditingBlog] = useState<any | null>(null);
 
   const { data: categories } = useQuery({
+    refetchInterval: 60000,
     queryKey: ['blog-categories'],
     queryFn: async () => {
       const res = await apiClient.get('/blog-categories');
@@ -46,6 +47,7 @@ export default function ManageBlogs() {
   });
 
   const { data, isLoading } = useQuery({
+    refetchInterval: 60000,
     queryKey: ['blogs', page, debouncedSearch],
     queryFn: async () => {
       const res = await apiClient.get(`/blogs?page=${page}&size=10&search=${debouncedSearch}&publicOnly=false`);

@@ -24,21 +24,25 @@ export default function Dashboard() {
   // We'll fetch high-level stats here. For now we can fetch the total elements from the paginated endpoints.
   
   const { data: usersData, isLoading: loadingUsers } = useQuery({
+    refetchInterval: 60000,
     queryKey: ['admin', 'users'],
     queryFn: () => apiClient.get('/users').then(res => res.data.data),
   });
 
   const { data: blogsData, isLoading: loadingBlogs } = useQuery({
+    refetchInterval: 60000,
     queryKey: ['admin', 'blogs'],
     queryFn: () => apiClient.get('/blogs?publicOnly=false').then(res => res.data.data),
   });
 
   const { data: brokersData, isLoading: loadingBrokers } = useQuery({
+    refetchInterval: 60000,
     queryKey: ['admin', 'brokers'],
     queryFn: () => apiClient.get('/brokers').then(res => res.data.data),
   });
 
   const { data: propFirmsData, isLoading: loadingPropFirms } = useQuery({
+    refetchInterval: 60000,
     queryKey: ['admin', 'prop-firms'],
     queryFn: () => apiClient.get('/prop-firms').then(res => res.data.data),
   });

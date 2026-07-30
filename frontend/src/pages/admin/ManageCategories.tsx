@@ -26,6 +26,7 @@ export default function ManageCategories() {
   const [editingItem, setEditingItem] = useState<any | null>(null);
 
   const { data, isLoading } = useQuery({
+    refetchInterval: 60000,
     queryKey: ['categories', page, debouncedSearch],
     queryFn: async () => {
       const res = await apiClient.get(`/blog-categories?page=${page}&size=10&search=${debouncedSearch}`);

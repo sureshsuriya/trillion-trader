@@ -35,6 +35,7 @@ export default function ManagePropFirms() {
   const [editingFirm, setEditingFirm] = useState<any | null>(null);
 
   const { data, isLoading } = useQuery({
+    refetchInterval: 60000,
     queryKey: ['propFirms', page, debouncedSearch],
     queryFn: async () => {
       const res = await apiClient.get(`/prop-firms?page=${page}&size=10&search=${debouncedSearch}`);

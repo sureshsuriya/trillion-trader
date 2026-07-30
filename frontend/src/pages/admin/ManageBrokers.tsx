@@ -35,6 +35,7 @@ export default function ManageBrokers() {
   const [editingBroker, setEditingBroker] = useState<any | null>(null);
 
   const { data, isLoading } = useQuery({
+    refetchInterval: 60000,
     queryKey: ['brokers', page, debouncedSearch],
     queryFn: async () => {
       const res = await apiClient.get(`/brokers?page=${page}&size=10&search=${debouncedSearch}`);

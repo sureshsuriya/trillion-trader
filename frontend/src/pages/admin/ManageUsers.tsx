@@ -31,6 +31,7 @@ export default function ManageUsers() {
 
   // Fetch Users
   const { data, isLoading } = useQuery({
+    refetchInterval: 60000,
     queryKey: ['users', page, debouncedSearch],
     queryFn: async () => {
       const res = await apiClient.get(`/users?page=${page}&size=10&search=${debouncedSearch}`);

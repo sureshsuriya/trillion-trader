@@ -30,6 +30,7 @@ export default function ManageTestimonials() {
   const [editingItem, setEditingItem] = useState<any | null>(null);
 
   const { data, isLoading } = useQuery({
+    refetchInterval: 60000,
     queryKey: ['testimonials', page, debouncedSearch],
     queryFn: async () => {
       const res = await apiClient.get(`/testimonials?page=${page}&size=10&search=${debouncedSearch}`);
