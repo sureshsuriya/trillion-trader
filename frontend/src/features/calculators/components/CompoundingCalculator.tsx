@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { Card } from '../ui/Card'
+import { Card } from '../../../components/ui/Card'
 
 export function CompoundingCalculator() {
   const [startingBalance, setStartingBalance] = useState<number>(1000)

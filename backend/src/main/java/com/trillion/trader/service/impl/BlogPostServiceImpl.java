@@ -11,6 +11,8 @@ import com.trillion.trader.model.BlogPost;
 import com.trillion.trader.repository.BlogCategoryRepository;
 import com.trillion.trader.repository.BlogPostRepository;
 import com.trillion.trader.service.BlogPostService;
+import com.trillion.trader.mapper.BlogMapper;
+import com.trillion.trader.util.RepositoryUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -58,7 +60,7 @@ public class BlogPostServiceImpl implements BlogPostService {
 
     @Override
     public BlogPostResponse getPostById(String id) {
-        return mapToResponse(findOrThrow(id));
+        return mapToResponse(RepositoryUtils.findOrThrow(postRepository, id, "Blog post"));
     }
 
     @Override
@@ -96,7 +98,7 @@ public class BlogPostServiceImpl implements BlogPostService {
 
     @Override
     public BlogPostResponse updatePost(String id, BlogPostRequest request) {
-        BlogPost post = findOrThrow(id);
+        BlogPost post = RepositoryUtils.findOrThrow(postRepository, id, "Blog post");
 
         if (!post.getSlug().equals(request.getSlug()) && postRepository.findBySlug(request.getSlug()).isPresent()) {
             throw new BadRequestException("Blog post slug already exists");
@@ -120,47 +122,21 @@ public class BlogPostServiceImpl implements BlogPostService {
 
     @Override
     public void deletePost(String id) {
-        postRepository.delete(findOrThrow(id));
+        postRepository.delete(RepositoryUtils.findOrThrow(postRepository, id, "Blog post"));
     }
 
     @Override
     public void incrementViews(String id) {
-        BlogPost post = findOrThrow(id);
+        BlogPost post = RepositoryUtils.findOrThrow(postRepository, id, "Blog post");
         post.setViews(post.getViews() + 1);
         postRepository.save(post);
     }
 
-    private BlogPost findOrThrow(String id) {
-        return postRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Blog post not found with id: " + id));
-    }
-
     private BlogPostResponse mapToResponse(BlogPost post) {
-        BlogCategoryResponse categoryResponse = null;
+        BlogCategory category = null;
         if (post.getCategoryId() != null) {
-            categoryResponse = categoryRepository.findById(post.getCategoryId())
-                    .map(c -> BlogCategoryResponse.builder()
-                            .id(c.getId())
-                            .name(c.getName())
-                            .slug(c.getSlug())
-                            .build())
-                    .orElse(null);
+            category = categoryRepository.findById(post.getCategoryId()).orElse(null);
         }
-
-        return BlogPostResponse.builder()
-                .id(post.getId())
-                .title(post.getTitle())
-                .slug(post.getSlug())
-                .content(post.getContent())
-                .excerpt(post.getExcerpt())
-                .coverImageUrl(post.getCoverImageUrl())
-                .authorId(post.getAuthorId())
-                .category(categoryResponse)
-                .tags(post.getTags())
-                .published(post.isPublished())
-                .views(post.getViews())
-                .createdAt(post.getCreatedAt())
-                .updatedAt(post.getUpdatedAt())
-                .build();
+        return BlogMapper.toPostResponse(post, category);
     }
 }

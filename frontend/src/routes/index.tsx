@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
 import { Navbar } from '../layouts/Navbar'
 import { Footer } from '../layouts/Footer'
+import { SEO } from '../components/ui/SEO'
 
 // Lazy-loaded pages
 const HomePage = lazy(() => import('../pages/Home'))
@@ -35,7 +36,7 @@ const ManageFAQ = lazy(() => import('../pages/admin/ManageFAQ'))
 const ManageSettings = lazy(() => import('../pages/admin/ManageSettings'))
 
 import { AdminLayout } from '../layouts/AdminLayout'
-import { ProtectedRoute } from '../components/auth/ProtectedRoute'
+import { ProtectedRoute } from '../features/auth/components/ProtectedRoute'
 
 // Page loading fallback
 function PageLoader() {
@@ -82,6 +83,7 @@ function AnimatedRoutes() {
 function PublicLayout() {
   return (
     <div className="min-h-screen flex flex-col bg-bg relative">
+      <SEO />
       <Navbar />
       <div className="flex-1 pt-16">
         <AnimatedRoutes />

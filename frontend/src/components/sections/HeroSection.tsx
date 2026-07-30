@@ -7,7 +7,7 @@ import { HERO_STATS, SOCIAL } from '../../constants'
 
 // Lazy-load the heavy 3D canvas
 const HeroCanvas = lazy(() =>
-  import('../3d/HeroCanvas').then((m) => ({ default: m.HeroCanvas }))
+  import('../common/3d/HeroCanvas').then((m) => ({ default: m.HeroCanvas }))
 )
 
 const TelegramIcon = () => (

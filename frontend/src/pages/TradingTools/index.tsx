@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { pageVariants, sectionHeaderVariants } from '../../animations/variants'
-import { CalculatorsContainer } from '../../components/calculators/CalculatorsContainer'
+import { CalculatorsContainer } from '../../features/calculators/components/CalculatorsContainer'
 
 export default function Page() {
   return (
