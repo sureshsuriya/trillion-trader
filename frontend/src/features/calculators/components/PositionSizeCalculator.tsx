@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Card } from '../../../components/ui/Card'
-import { TICKER_SYMBOLS } from '../../../constants/index'
+import { useLiveRates } from '../../../hooks/useLiveRates'
 
 export function PositionSizeCalculator() {
+  const rates = useLiveRates()
   const [accountBalance, setAccountBalance] = useState<number>(10000)
   const [riskPercent, setRiskPercent] = useState<number>(1)
   const [stopLossPips, setStopLossPips] = useState<number>(20)
@@ -28,7 +29,7 @@ export function PositionSizeCalculator() {
     if (pair.endsWith('/USD')) {
       pipValuePerLot = 10
     } else if (pair === 'USD/JPY') {
-      const jpyRate = TICKER_SYMBOLS.find(t => t.symbol === 'USD/JPY')?.value || 150
+      const jpyRate = rates['USD/JPY'] ?? 150
       pipValuePerLot = 1000 / jpyRate
     } else if (pair.startsWith('USD/')) {
       // e.g. USD/CAD
@@ -46,7 +47,7 @@ export function PositionSizeCalculator() {
       setPositionSizeLots(0)
       setPositionSizeUnits(0)
     }
-  }, [accountBalance, riskPercent, stopLossPips, pair])
+  }, [accountBalance, riskPercent, stopLossPips, pair, rates])
 
   return (
     <Card glow className="p-6 md:p-8 max-w-2xl mx-auto border-t-2 border-t-[#DDA73C]">

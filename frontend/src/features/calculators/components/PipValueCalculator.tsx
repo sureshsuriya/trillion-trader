@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Card } from '../../../components/ui/Card'
-import { TICKER_SYMBOLS } from '../../../constants/index'
+import { useLiveRates } from '../../../hooks/useLiveRates'
 
 export function PipValueCalculator() {
+  const rates = useLiveRates()
   const [tradeSizeLots, setTradeSizeLots] = useState<number>(1)
   const [pair, setPair] = useState<string>('EUR/USD')
 
@@ -16,14 +17,14 @@ export function PipValueCalculator() {
     if (pair.endsWith('/USD')) {
       basePipValue = 10
     } else if (pair === 'USD/JPY') {
-      const jpyRate = TICKER_SYMBOLS.find(t => t.symbol === 'USD/JPY')?.value || 150
+      const jpyRate = rates['USD/JPY'] ?? 150
       basePipValue = 1000 / jpyRate
     } else if (pair.startsWith('USD/')) {
       basePipValue = 10 / 1.36 // rough placeholder for CAD/CHF
     }
 
     setPipValue(basePipValue * tradeSizeLots)
-  }, [tradeSizeLots, pair])
+  }, [tradeSizeLots, pair, rates])
 
   return (
     <Card glow className="p-6 md:p-8 max-w-2xl mx-auto border-t-2 border-t-[#00D084]">

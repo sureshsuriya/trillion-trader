@@ -47,19 +47,7 @@ export const HERO_STATS = [
   { label: 'Countries', value: '25+', prefix: '' },
 ] as const
 
-// ============================================
-// TICKER SYMBOLS (Default Values)
-// ============================================
-export const TICKER_SYMBOLS = [
-  { symbol: 'XAU/USD', label: 'Gold', value: 2412.30 },
-  { symbol: 'XAG/USD', label: 'Silver', value: 28.44 },
-  { symbol: 'BTC/USD', label: 'Bitcoin', value: 64120 },
-  { symbol: 'ETH/USD', label: 'Ethereum', value: 3450 },
-  { symbol: 'EUR/USD', label: 'Euro', value: 1.0851 },
-  { symbol: 'GBP/USD', label: 'Pound', value: 1.2734 },
-  { symbol: 'USD/JPY', label: 'Yen', value: 156.22 },
-  { symbol: 'AUD/USD', label: 'Aussie', value: 0.6612 },
-] as const
+// TICKER_SYMBOLS removed — live data is fetched from /api/v1/market/ticker
 
 // ============================================
 // COLORS (Design Tokens)

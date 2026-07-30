@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Card } from '../../../components/ui/Card'
-import { TICKER_SYMBOLS } from '../../../constants/index'
+import { useLiveRates } from '../../../hooks/useLiveRates'
 
 export function ProfitCalculator() {
+  const rates = useLiveRates()
   const [tradeSizeLots, setTradeSizeLots] = useState<number>(1)
   const [entryPrice, setEntryPrice] = useState<number>(1.0850)
   const [exitPrice, setExitPrice] = useState<number>(1.0900)
@@ -36,7 +37,7 @@ export function ProfitCalculator() {
     if (pair.endsWith('/USD')) {
       pipValuePerLot = 10
     } else if (pair === 'USD/JPY') {
-      const jpyRate = TICKER_SYMBOLS.find(t => t.symbol === 'USD/JPY')?.value || 150
+      const jpyRate = rates['USD/JPY'] ?? 150
       pipValuePerLot = 1000 / jpyRate
     } else if (pair.startsWith('USD/')) {
       pipValuePerLot = 10 / 1.36
@@ -46,7 +47,7 @@ export function ProfitCalculator() {
     const profit = pips * pipValuePerLot * tradeSizeLots
     setProfitAmount(profit)
     
-  }, [tradeSizeLots, entryPrice, exitPrice, positionType, pair])
+  }, [tradeSizeLots, entryPrice, exitPrice, positionType, pair, rates])
 
   const isProfit = profitAmount >= 0
 

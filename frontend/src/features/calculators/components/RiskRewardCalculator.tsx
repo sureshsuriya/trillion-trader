@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Card } from '../../../components/ui/Card'
-import { TICKER_SYMBOLS } from '../../../constants/index'
+import { useLiveRates } from '../../../hooks/useLiveRates'
 
 export function RiskRewardCalculator() {
+  const rates = useLiveRates()
   const [stopLossPips, setStopLossPips] = useState<number>(20)
   const [takeProfitPips, setTakeProfitPips] = useState<number>(60)
   const [tradeSizeLots, setTradeSizeLots] = useState<number>(1)
@@ -20,7 +21,7 @@ export function RiskRewardCalculator() {
     if (pair.endsWith('/USD')) {
       pipValuePerLot = 10
     } else if (pair === 'USD/JPY') {
-      const jpyRate = TICKER_SYMBOLS.find(t => t.symbol === 'USD/JPY')?.value || 150
+      const jpyRate = rates['USD/JPY'] ?? 150
       pipValuePerLot = 1000 / jpyRate
     } else if (pair.startsWith('USD/')) {
       pipValuePerLot = 10 / 1.36
@@ -40,7 +41,7 @@ export function RiskRewardCalculator() {
       setRrRatio(0)
     }
 
-  }, [stopLossPips, takeProfitPips, tradeSizeLots, pair])
+  }, [stopLossPips, takeProfitPips, tradeSizeLots, pair, rates])
 
   return (
     <Card glow className="p-6 md:p-8 max-w-2xl mx-auto border-t-2 border-t-[#3B82F6]">

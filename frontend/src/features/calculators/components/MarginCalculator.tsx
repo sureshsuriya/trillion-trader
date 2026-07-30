@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Card } from '../../../components/ui/Card'
-import { TICKER_SYMBOLS } from '../../../constants/index'
+import { useLiveRates } from '../../../hooks/useLiveRates'
 
 export function MarginCalculator() {
+  const rates = useLiveRates()
   const [tradeSizeLots, setTradeSizeLots] = useState<number>(1)
   const [leverage, setLeverage] = useState<number>(100)
   const [pair, setPair] = useState<string>('EUR/USD')
@@ -22,21 +23,18 @@ export function MarginCalculator() {
     let marginInUsd = marginInBaseCurrency
     
     if (pair.startsWith('EUR/')) {
-      const rate = TICKER_SYMBOLS.find(t => t.symbol === 'EUR/USD')?.value || 1.08
-      marginInUsd = marginInBaseCurrency * rate
+      marginInUsd = marginInBaseCurrency * (rates['EUR/USD'] ?? 1.08)
     } else if (pair.startsWith('GBP/')) {
-      const rate = TICKER_SYMBOLS.find(t => t.symbol === 'GBP/USD')?.value || 1.27
-      marginInUsd = marginInBaseCurrency * rate
+      marginInUsd = marginInBaseCurrency * (rates['GBP/USD'] ?? 1.27)
     } else if (pair.startsWith('AUD/')) {
-      const rate = TICKER_SYMBOLS.find(t => t.symbol === 'AUD/USD')?.value || 0.66
-      marginInUsd = marginInBaseCurrency * rate
+      marginInUsd = marginInBaseCurrency * (rates['AUD/USD'] ?? 0.66)
     } else if (pair.startsWith('NZD/')) {
       marginInUsd = marginInBaseCurrency * 0.60
     }
     // If it starts with USD (e.g. USD/JPY, USD/CAD), marginInUsd = marginInBaseCurrency, no conversion needed
 
     setMarginRequired(marginInUsd)
-  }, [tradeSizeLots, leverage, pair])
+  }, [tradeSizeLots, leverage, pair, rates])
 
   return (
     <Card glow className="p-6 md:p-8 max-w-2xl mx-auto border-t-2 border-t-[#F472B6]">

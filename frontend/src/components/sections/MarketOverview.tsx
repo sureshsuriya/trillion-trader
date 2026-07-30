@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useQuery } from '@tanstack/react-query'
+import { apiClient } from '../../api/axios'
 import { staggerContainer, staggerItem, sectionHeaderVariants } from '../../animations/variants'
 
 // ============================================
@@ -14,6 +16,14 @@ const SYMBOLS = [
   { label: 'NAS100',  display: 'Nasdaq',  symbol: 'CAPITALCOM:US100',  color: '#F472B6' },
 ]
 
+interface MarketOverview {
+  session: string
+  volatility: string
+  riskMood: string
+  dxyValue: string
+  vixValue: string
+}
+
 // ============================================
 // TRADINGVIEW EMBED — debounced init
 // ============================================
@@ -25,11 +35,9 @@ function TradingViewEmbed({ symbol, widgetId }: { symbol: string; widgetId: stri
   useEffect(() => {
     setLoaded(false)
 
-    // Small delay so React finishes DOM painting before TV tries to find the container
     const timer = setTimeout(() => {
       if (!ref.current) return
 
-      // Remove any old script
       if (scriptRef.current) { scriptRef.current.remove(); scriptRef.current = null }
 
       const script = document.createElement('script')
@@ -57,7 +65,6 @@ function TradingViewEmbed({ symbol, widgetId }: { symbol: string; widgetId: stri
       ref.current.appendChild(script)
       scriptRef.current = script
 
-      // Fallback: show after 3s even if onload doesn't fire
       setTimeout(() => setLoaded(true), 3000)
     }, 200)
 
@@ -69,7 +76,6 @@ function TradingViewEmbed({ symbol, widgetId }: { symbol: string; widgetId: stri
 
   return (
     <div style={{ width: '100%', height: '100%', position: 'relative' }}>
-      {/* Loading skeleton */}
       <AnimatePresence>
         {!loaded && (
           <motion.div
@@ -135,10 +141,16 @@ export function MarketOverviewSection() {
 
   const widgetId = `tv-${active.label.replace('/', '-').toLowerCase()}`
 
+  const { data: overview } = useQuery<MarketOverview>({
+    queryKey: ['market-overview'],
+    queryFn: () => apiClient.get('/market/overview').then(res => res.data.data),
+    refetchInterval: 60000,
+  })
+
   return (
     <section style={{ padding: '6rem 0 7rem', position: 'relative', overflow: 'hidden' }}>
 
-      {/* Top ambient glow matching logo gold */}
+      {/* Top ambient glow */}
       <div style={{
         position: 'absolute', top: 0, left: '50%', transform: 'translateX(-50%)',
         width: '900px', height: '400px',
@@ -276,16 +288,9 @@ export function MarketOverviewSection() {
                 {active.display} · 1H
               </span>
             </div>
-
-            {/* Right: signal pills */}
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-              <StatPill label="RSI" value="56.4" color="#60A5FA" />
-              <StatPill label="Signal" value="BUY" color="#00E676" />
-              <StatPill label="Trend" value="↑ Bullish" color="#FFD700" />
-            </div>
           </div>
 
-          {/* --- CHART BODY — 700px tall --- */}
+          {/* --- CHART BODY --- */}
           <AnimatePresence mode="wait">
             <motion.div
               key={active.label}
@@ -308,7 +313,7 @@ export function MarketOverviewSection() {
             flexWrap: 'wrap', gap: '0.5rem',
           }}>
             <span style={{ color: 'rgba(255,255,255,0.18)', fontSize: '0.7rem' }}>
-              Data provided by TradingView · Prices may be delayed up to 15 min
+              Chart data provided by TradingView (live) · Market stats updated every 60 seconds
             </span>
             <a
               href="https://www.tradingview.com"
@@ -320,7 +325,7 @@ export function MarketOverviewSection() {
           </div>
         </motion.div>
 
-        {/* BOTTOM MARKET CONTEXT PILLS */}
+        {/* BOTTOM LIVE MARKET CONTEXT PILLS — sourced from backend */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -328,11 +333,11 @@ export function MarketOverviewSection() {
           transition={{ duration: 0.6, delay: 0.3 }}
           style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', justifyContent: 'center', marginTop: '1.75rem' }}
         >
-          <StatPill label="Session" value="London + NY" color="#FFD700" />
-          <StatPill label="Volatility" value="Moderate" color="#F97316" />
-          <StatPill label="Risk Mood" value="Risk-On" color="#00E676" />
-          <StatPill label="DXY" value="104.32 ▼" color="#F472B6" />
-          <StatPill label="VIX" value="14.22" color="#A78BFA" />
+          <StatPill label="Session"    value={overview?.session    ?? '…'} color="#FFD700" />
+          <StatPill label="Volatility" value={overview?.volatility ?? '…'} color="#F97316" />
+          <StatPill label="Fear & Greed" value={overview?.riskMood   ?? '…'} color="#00E676" />
+          <StatPill label="DXY"        value={overview?.dxyValue   ?? '…'} color="#F472B6" />
+          <StatPill label="VIX"        value={overview?.vixValue   ?? '…'} color="#A78BFA" />
         </motion.div>
 
       </div>
