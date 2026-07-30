@@ -4,9 +4,11 @@ import com.trillion.trader.dto.request.BlogCategoryRequest;
 import com.trillion.trader.dto.response.BlogCategoryResponse;
 import com.trillion.trader.exception.BadRequestException;
 import com.trillion.trader.exception.ResourceNotFoundException;
+import com.trillion.trader.mapper.BlogMapper;
 import com.trillion.trader.model.BlogCategory;
 import com.trillion.trader.repository.BlogCategoryRepository;
 import com.trillion.trader.service.BlogCategoryService;
+import com.trillion.trader.util.RepositoryUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -22,19 +24,19 @@ public class BlogCategoryServiceImpl implements BlogCategoryService {
     @Override
     public List<BlogCategoryResponse> getAllCategories() {
         return repository.findAll().stream()
-                .map(this::mapToResponse)
+                .map(BlogMapper::toCategoryResponse)
                 .collect(Collectors.toList());
     }
 
     @Override
     public BlogCategoryResponse getCategoryById(String id) {
-        return mapToResponse(findOrThrow(id));
+        return BlogMapper.toCategoryResponse(RepositoryUtils.findOrThrow(repository, id, "Category"));
     }
 
     @Override
     public BlogCategoryResponse getCategoryBySlug(String slug) {
         return repository.findBySlug(slug)
-                .map(this::mapToResponse)
+                .map(BlogMapper::toCategoryResponse)
                 .orElseThrow(() -> new ResourceNotFoundException("Category not found with slug: " + slug));
     }
 
@@ -50,12 +52,12 @@ public class BlogCategoryServiceImpl implements BlogCategoryService {
                 .description(request.getDescription())
                 .build();
 
-        return mapToResponse(repository.save(category));
+        return BlogMapper.toCategoryResponse(repository.save(category));
     }
 
     @Override
     public BlogCategoryResponse updateCategory(String id, BlogCategoryRequest request) {
-        BlogCategory category = findOrThrow(id);
+        BlogCategory category = RepositoryUtils.findOrThrow(repository, id, "Category");
 
         if (!category.getSlug().equals(request.getSlug()) && repository.findBySlug(request.getSlug()).isPresent()) {
             throw new BadRequestException("Category slug already exists");
@@ -65,25 +67,11 @@ public class BlogCategoryServiceImpl implements BlogCategoryService {
         category.setSlug(request.getSlug());
         category.setDescription(request.getDescription());
 
-        return mapToResponse(repository.save(category));
+        return BlogMapper.toCategoryResponse(repository.save(category));
     }
 
     @Override
     public void deleteCategory(String id) {
-        repository.delete(findOrThrow(id));
-    }
-
-    private BlogCategory findOrThrow(String id) {
-        return repository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Category not found with id: " + id));
-    }
-
-    private BlogCategoryResponse mapToResponse(BlogCategory category) {
-        return BlogCategoryResponse.builder()
-                .id(category.getId())
-                .name(category.getName())
-                .slug(category.getSlug())
-                .description(category.getDescription())
-                .build();
+        repository.delete(RepositoryUtils.findOrThrow(repository, id, "Category"));
     }
 }

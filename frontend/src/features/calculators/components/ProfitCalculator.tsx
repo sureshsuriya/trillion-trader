@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { Card } from '../ui/Card'
-import { TICKER_SYMBOLS } from '../../constants'
+import { Card } from '../../../components/ui/Card'
+import { TICKER_SYMBOLS } from '../../../constants/index'
 
 export function ProfitCalculator() {
   const [tradeSizeLots, setTradeSizeLots] = useState<number>(1)
