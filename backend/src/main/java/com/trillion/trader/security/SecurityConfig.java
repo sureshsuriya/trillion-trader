@@ -59,6 +59,7 @@ public class SecurityConfig {
                         // Swagger UI Endpoints (Available in non-prod, disabled in prod via application-prod.yml)
                         .requestMatchers(HttpMethod.GET, "/api/v1/courses/**").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/v1/courses/*/progress").permitAll()
+                        .requestMatchers("/api/v1/payments/**").permitAll()
                         .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll()
                         
                         // Anything else requires authentication

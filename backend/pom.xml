@@ -105,6 +105,12 @@
 			<groupId>com.github.ben-manes.caffeine</groupId>
 			<artifactId>caffeine</artifactId>
 		</dependency>
+		<!-- Stripe SDK for Subscription Payments -->
+		<dependency>
+			<groupId>com.stripe</groupId>
+			<artifactId>stripe-java</artifactId>
+			<version>24.23.0</version>
+		</dependency>
 	</dependencies>
 
 	<build>

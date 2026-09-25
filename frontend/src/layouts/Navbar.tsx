@@ -4,6 +4,7 @@ import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
 import { navbarVariants } from '../animations/variants'
 import { NAV_LINKS, SOCIAL } from '../constants'
 import { Button } from '../components/ui/Button'
+import { PricingModal } from '../components/ui/PricingModal'
 
 const TelegramIcon = () => (
   <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2">
@@ -69,6 +70,7 @@ function NavItem({ href, label, currentPath }: { href: string; label: string; cu
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
+  const [isPricingOpen, setIsPricingOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const location = useLocation()
   const { scrollY } = useScroll()
@@ -84,6 +86,7 @@ export function Navbar() {
 
   return (
     <>
+      <PricingModal isOpen={isPricingOpen} onClose={() => setIsPricingOpen(false)} />
       <ScrollProgressBar />
       <motion.header
         variants={navbarVariants}
@@ -109,21 +112,18 @@ export function Navbar() {
               <Button variant="ghost" size="sm" href={SOCIAL.TELEGRAM} target="_blank" rel="noopener noreferrer" leftIcon={<TelegramIcon />}>
                 Join Channel
               </Button>
-              <Link to="/contact">
-                <motion.button
-                  whileHover={{ scale: 1.03, boxShadow: '0 0 20px rgba(221,167,60,0.4)' }}
-                  whileTap={{ scale: 0.97 }}
-                  style={{
-                    padding: '8px 20px', borderRadius: '10px', border: 'none',
-                    background: 'linear-gradient(135deg, #F5D36B 0%, #DDA73C 45%, #996D19 100%)',
-                    color: '#030303', fontWeight: 700, fontSize: '0.8125rem',
-                    cursor: 'pointer', fontFamily: 'Poppins, sans-serif',
-                    boxShadow: '0 0 14px rgba(221,167,60,0.25)',
-                  }}
-                >
-                  Get Started
-                </motion.button>
-              </Link>
+              <button
+                onClick={() => setIsPricingOpen(true)}
+                style={{
+                  padding: '8px 20px', borderRadius: '10px', border: 'none',
+                  background: 'linear-gradient(135deg, #F5D36B 0%, #DDA73C 45%, #996D19 100%)',
+                  color: '#030303', fontWeight: 700, fontSize: '0.8125rem',
+                  cursor: 'pointer', fontFamily: 'Poppins, sans-serif',
+                  boxShadow: '0 0 14px rgba(221,167,60,0.25)',
+                }}
+              >
+                ⚡ Get Pro Pass
+              </button>
             </div>
 
             <motion.button
