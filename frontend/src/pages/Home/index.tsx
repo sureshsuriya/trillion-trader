@@ -4,6 +4,7 @@ import { HeroSection } from '../../components/sections/HeroSection'
 import { LiveTicker } from '../../components/sections/LiveTicker'
 import { ServicesPreview, StatsSection, CTASection } from '../../components/sections/HomeSections'
 import { MarketOverviewSection } from '../../components/sections/MarketOverview'
+import { AcademyFeaturedSection } from '../../components/sections/AcademyFeaturedSection'
 
 export default function HomePage() {
   return (
@@ -19,16 +20,19 @@ export default function HomePage() {
       {/* 2. LIVE TICKER — Pinned just below hero */}
       <LiveTicker />
 
-      {/* 3. SERVICES PREVIEW */}
+      {/* 3. ACADEMY FEATURED COURSES */}
+      <AcademyFeaturedSection />
+
+      {/* 4. SERVICES PREVIEW */}
       <ServicesPreview />
 
-      {/* 4. STATS */}
+      {/* 5. STATS */}
       <StatsSection />
 
-      {/* 5. MARKET OVERVIEW — Big premium chart */}
+      {/* 6. MARKET OVERVIEW — Big premium chart */}
       <MarketOverviewSection />
 
-      {/* 6. CTA */}
+      {/* 7. CTA */}
       <CTASection />
     </motion.main>
   )

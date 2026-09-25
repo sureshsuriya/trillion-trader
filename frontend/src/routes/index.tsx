@@ -22,6 +22,11 @@ const PrivacyPage = lazy(() => import('../pages/Legal/Privacy'))
 const TermsPage = lazy(() => import('../pages/Legal/Terms'))
 const NotFoundPage = lazy(() => import('../pages/NotFound'))
 
+// Courses Pages
+const CoursesPage = lazy(() => import('../pages/Courses'))
+const CourseDetailPage = lazy(() => import('../pages/Courses/CourseDetail'))
+const LessonViewerPage = lazy(() => import('../pages/Courses/LessonViewer'))
+
 // Admin Pages
 const AdminLogin = lazy(() => import('../pages/admin/Login'))
 const AdminDashboard = lazy(() => import('../pages/admin/Dashboard'))
@@ -30,6 +35,7 @@ const ManageBlogs = lazy(() => import('../pages/admin/ManageBlogs'))
 const ManageCategories = lazy(() => import('../pages/admin/ManageCategories'))
 const ManageBrokers = lazy(() => import('../pages/admin/ManageBrokers'))
 const ManagePropFirms = lazy(() => import('../pages/admin/ManagePropFirms'))
+const ManageCourses = lazy(() => import('../pages/admin/ManageCourses'))
 const ManageResources = lazy(() => import('../pages/admin/ManageResources'))
 const ManageTestimonials = lazy(() => import('../pages/admin/ManageTestimonials'))
 const ManageFAQ = lazy(() => import('../pages/admin/ManageFAQ'))
@@ -59,6 +65,9 @@ function AnimatedRoutes() {
       <Suspense fallback={<PageLoader />}>
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<HomePage />} />
+          <Route path="/courses" element={<CoursesPage />} />
+          <Route path="/courses/:slug" element={<CourseDetailPage />} />
+          <Route path="/courses/:courseSlug/lessons/:lessonSlug" element={<LessonViewerPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/tools" element={<TradingToolsPage />} />
@@ -108,6 +117,7 @@ export function AppRouter() {
               <Route path="categories" element={<ManageCategories />} />
               <Route path="brokers" element={<ManageBrokers />} />
               <Route path="prop-firms" element={<ManagePropFirms />} />
+              <Route path="courses" element={<ManageCourses />} />
               <Route path="resources" element={<ManageResources />} />
               <Route path="testimonials" element={<ManageTestimonials />} />
               <Route path="faqs" element={<ManageFAQ />} />

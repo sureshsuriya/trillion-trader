@@ -10,12 +10,14 @@ import {
   MessageSquare,
   HelpCircle,
   Settings,
-  LogOut
+  LogOut,
+  GraduationCap
 } from 'lucide-react';
 import { useAuth } from '../../../contexts/AuthContext';
 
 const navItems = [
   { icon: LayoutDashboard, label: 'Dashboard', href: '/admin' },
+  { icon: GraduationCap, label: 'Courses', href: '/admin/courses' },
   { icon: Users, label: 'Users', href: '/admin/users' },
   { icon: FileText, label: 'Blog Posts', href: '/admin/blogs' },
   { icon: FolderTree, label: 'Categories', href: '/admin/categories' },

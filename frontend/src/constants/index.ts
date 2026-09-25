@@ -22,8 +22,8 @@ export const SOCIAL = {
 // ============================================
 export const NAV_LINKS = [
   { label: 'Home', href: '/' },
+  { label: 'Courses 🎓', href: '/courses' },
   { label: 'About', href: '/about' },
-  { label: 'Services', href: '/services' },
   { label: 'Trading Tools', href: '/tools' },
   { label: 'Prop Firms', href: '/prop-firms' },
   { label: 'Brokers', href: '/brokers' },
