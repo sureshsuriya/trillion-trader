@@ -16,14 +16,6 @@ const TelegramIcon = () => (
   </svg>
 )
 
-const InstagramIcon = () => (
-  <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-  </svg>
-)
-
 const ArrowRightIcon = () => (
   <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2">
     <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round"/>
@@ -89,16 +81,18 @@ export function HeroSection() {
           custom={0.45}
           style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', justifyContent: 'center', marginBottom: '4rem' }}
         >
-          <Link to="/services">
+          <Link to="/courses">
             <Button variant="gold" size="xl" rightIcon={<ArrowRightIcon />}>
-              Start Learning
+              Explore Academy 🎓
+            </Button>
+          </Link>
+          <Link to="/prop-firms">
+            <Button variant="outline" size="xl">
+              Compare Prop Firms 🏆
             </Button>
           </Link>
           <Button variant="ghost" size="xl" href={SOCIAL.TELEGRAM} target="_blank" rel="noopener noreferrer" leftIcon={<TelegramIcon />}>
-            Telegram
-          </Button>
-          <Button variant="ghost" size="xl" href={SOCIAL.INSTAGRAM} target="_blank" rel="noopener noreferrer" leftIcon={<InstagramIcon />}>
-            Instagram
+            Telegram Channel
           </Button>
         </motion.div>
 

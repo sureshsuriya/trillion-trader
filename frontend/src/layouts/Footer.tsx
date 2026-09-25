@@ -30,8 +30,8 @@ const footerLinks = [
   {
     heading: 'Platform',
     links: [
+      { label: 'Trading Academy 🎓', href: '/courses' },
       { label: 'About Us', href: '/about' },
-      { label: 'Services', href: '/services' },
       { label: 'Trading Tools', href: '/tools' },
       { label: 'Blog', href: '/blog' },
     ],

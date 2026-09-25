@@ -11,7 +11,7 @@ import { TradingViewWidget } from './TradingViewWidget'
 // ============================================
 const services = [
   { icon: '📊', title: 'Live Market Analysis', description: 'Daily forex setups, entry zones, and real-time trade ideas shared directly in our Telegram community.', href: '/services' },
-  { icon: '🎓', title: 'Trading Education', description: 'From beginner to advanced — master price action, ICT concepts, risk management, and trading psychology.', href: '/resources' },
+  { icon: '🎓', title: 'Trading Education', description: 'From beginner to advanced — master price action, ICT concepts, risk management, and trading psychology.', href: '/courses' },
   { icon: '🏦', title: 'Prop Firm Guidance', description: 'Curated reviews and strategies for FTMO, MFF, Funded Next, and more. Pass your challenge with confidence.', href: '/prop-firms' },
   { icon: '🔧', title: 'Professional Tools', description: '6 premium calculators — lot size, risk, pip value, margin, P&L, and position sizing. All free.', href: '/tools' },
   { icon: '🤝', title: 'Broker Reviews', description: 'Thoroughly vetted broker comparisons with exclusive referral partnerships and trusted recommendations.', href: '/brokers' },
@@ -184,15 +184,14 @@ export function CTASection() {
               Join over 2,500 traders in the Trillion Traders 369 community. Get daily market analysis, premium education, and professional tools — all for free.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button variant="gold" size="xl" href={SOCIAL.TELEGRAM} target="_blank" rel="noopener noreferrer">
-                Join Our Telegram
-              </Button>
-              <Button variant="outline" size="xl" href={SOCIAL.INSTAGRAM} target="_blank" rel="noopener noreferrer">
-                Follow on Instagram
-              </Button>
-              <Link to="/services">
-                <Button variant="outline" size="xl">Explore Services</Button>
+              <Link to="/courses">
+                <Button variant="gold" size="xl">
+                  Enroll in Academy 🎓
+                </Button>
               </Link>
+              <Button variant="outline" size="xl" href={SOCIAL.TELEGRAM} target="_blank" rel="noopener noreferrer">
+                Join Telegram Channel
+              </Button>
             </div>
           </div>
         </motion.div>
